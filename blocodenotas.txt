@@ -20,7 +20,7 @@ vetor de numeros ASCII dos caracteres :
 int vetor[tamanho_ASCII];
 
 [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
- a  b  c  d  e  f   g  h  i   j   k   l
+ a   b   c   d   e   f   g   h   i   j   k   l
 
 
 PASSOS DO TRABALHO:
