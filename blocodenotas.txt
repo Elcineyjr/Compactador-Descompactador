@@ -1,0 +1,103 @@
+printf("Hello Wor...");
+printf(", My friend);
+
+#define TEM_PESO 0
+#define TEM_CHAR 1
+
+Struct arv {
+int id_peso_char;
+int peso;
+char letra;
+struct arv* arvEsq;
+struct arv* arvDir;
+};
+
+
+
+vetor de numeros ASCII dos caracteres :
+
+#define tamanho_ASCII 128;
+int vetor[tamanho_ASCII];
+
+[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
+ a  b  c  d  e  f   g  h  i   j   k   l
+
+
+PASSOS DO TRABALHO:
+->criar vetor(int) no qual o indice é o numero dos caracteres na tabela ASCII
+->ler arquivo e verificar a quantidade de vezes q a letra aparece
+->incrementar no vetor
+
+->criar LISTA(Arv*) no qual as letras estão ordenadas crescente pela quantidade de vezes q aparecem
+->iterar lista até haver apenas uma arvore
+
+
+
+
+
+LISTA DE CHAR E SEUS PESOS:
+
+a  b  c    d  e    f
+1  5  10  50  55   100
+
+
+
+    6       c     d     e    f
+   / \      10   50   55  100
+  a    b
+
+
+     16         d     e    f
+    /  \        50   55  100
+  6     c
+ / \
+a  b
+
+
+  e                 66            f
+  55              /    \          100
+                 16     d
+                /  \
+               6    c
+              / \
+              a  b
+
+
+
+
+f            121
+100         /   \
+           e    66
+              /    \
+            16       d
+           /  \
+          6    c
+         / \
+        a  b
+
+
+
+ARVORE FINAL:
+
+
+            221
+           /    \
+          f     121
+               /   \
+              e     66
+                   /   \
+                 16     d
+                /  \
+               6    c
+              / \
+             a   b
+
+
+Tabela de como as letras serao em binario:
+
+f.............0
+e............10
+d............111
+c............1101
+b............11001
+a............11000
