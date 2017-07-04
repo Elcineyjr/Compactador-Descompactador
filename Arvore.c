@@ -4,6 +4,8 @@
 
 struct arvore
 {
+    int id_peso_ou_char;
+    int peso;
     char caracter;
     struct arvore* esq;
     struct arvore* dir;
@@ -15,7 +17,8 @@ Arv* arv_criavazia()
     return NULL;
 }
 
-Arv* arv_cria (char c, Arv* e, Arv* d)
+
+Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
 {
     Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
 
@@ -23,10 +26,18 @@ Arv* arv_cria (char c, Arv* e, Arv* d)
     //nova_arvore->caracter = (char)malloc(sizeof(char));
     nova_arvore->caracter = c;
 
+    nova_arvore->peso = peso;
+
     nova_arvore->esq = e;
     nova_arvore->dir = d;
 
     return nova_arvore;
+}
+
+
+int arv_get_peso(Arv* arvore)
+{
+    return arvore->peso;
 }
 
 
@@ -36,6 +47,7 @@ Arv* arv_libera (Arv* a)
     {
         arv_libera(a->esq);
         arv_libera(a->dir);
+        free(a);
         //free(a->caracter);
     }
 

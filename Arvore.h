@@ -1,11 +1,20 @@
 typedef struct arvore Arv;
 
+
+/*
+*
+*Esse arquivo só foi copiado de um exercicio da patricia
+*Nao serao usadas todas as funçoes que estão aqui
+*
+*/
+
+
 //Cria uma árvore vazia
 Arv* arv_criavazia (void);
 
 //cria uma árvore com a informação do nó raiz c, e
 //com subárvore esquerda e e subárvore direita d
-Arv* arv_cria (char c, Arv* e, Arv* d);
+Arv* arv_cria (char c, int peso, Arv* e, Arv* d);
 
 //libera o espaço de memória ocupado pela árvore a
 Arv* arv_libera (Arv* a);
@@ -31,3 +40,5 @@ int ocorrencias (Arv* a, char c);
 
 //retorna o campo informacao de um dado no
 char info (Arv* a);
+
+Arv* arv_get_peso(Arv* arvore);
