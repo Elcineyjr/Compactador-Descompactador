@@ -21,7 +21,7 @@
 *.dylib
 
 # Executables
-bin/release/trab1/
+bin/release/trab2/
 *.exe
 *.out
 *.app
