@@ -1,3 +1,6 @@
+#ifndef TRAB2_ARVORE_H
+#define TRAB2_ARVORE_H
+
 typedef struct arvore Arv;
 
 
@@ -41,4 +44,8 @@ int ocorrencias (Arv* a, char c);
 //retorna o campo informacao de um dado no
 char info (Arv* a);
 
-Arv* arv_get_peso(Arv* arvore);
+int arv_get_peso(Arv* arvore);
+
+char arv_get_char(Arv* arvore);
+
+#endif //TRAB2_ARVORE_H
