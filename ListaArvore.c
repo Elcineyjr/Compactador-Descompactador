@@ -63,13 +63,6 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
         aux = aux->prox;
     }
     //**************************** TERMINAR ESSA FUNÇAO ***************************
-    if(aux == lista->prim && aux == lista->ult)
-    {
-        celula->prox = aux;
-        lista->prim = celula;
-
-        return lista;
-    }
     if(aux == lista->prim)
     {
         celula->prox = aux;
@@ -83,6 +76,10 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
         celula->prox = aux;
 
         return lista;
+    }
+    if(ant == lista->ult)
+    {
+        lista->ult = celula;
     }
     ant->prox = celula;
     celula->prox = aux;
