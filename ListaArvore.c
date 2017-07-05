@@ -110,9 +110,18 @@ ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor)
 }
 
 
-//se a funçao "lista_insere_celula" inserir de modo ordenado nao precisa dessa funçao
-// ListaArvore* lista_ordena(ListaArvore* lista)
-// {
-//     Celula* aux = lista->prim
-//
-// }
+void lista_imprime(ListaArvore* lista)
+{
+    if(lista_vazia(lista))
+    {
+        printf("Lista Vazia\n");
+        return;
+    }
+
+    Celula* aux = lista->prim;
+    while(aux)
+    {
+        printf("%c\n", arv_get_char(aux->arvore));
+        aux = aux->prox;
+    }
+}
