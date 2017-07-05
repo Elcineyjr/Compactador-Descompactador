@@ -41,6 +41,12 @@ int arv_get_peso(Arv* arvore)
 }
 
 
+char arv_get_char(Arv* arvore)
+{
+    return arvore->caracter;
+}
+
+
 Arv* arv_libera (Arv* a)
 {
     if(a)
