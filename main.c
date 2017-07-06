@@ -27,17 +27,21 @@ int main()
         i++;
     }
 
-    vetor[65] = 0;
-    vetor[66] = 0;
-    vetor[67] = 1;
-    vetor[68] = 10;
-    vetor[69] = 0;
+    vetor[65] = 1;
+    vetor[66] = 2;
+    vetor[67] = 3;
+    vetor[68] = 4;
+    vetor[69] = 5;
 
 
     ListaArvore* a;
 
     a = gera_lista_caractes(vetor, tam);
 
+    lista_imprime(a);
+
+    lista_retira_primeiro(a);
+    lista_retira_primeiro(a);
     lista_imprime(a);
     return 0;
 }
