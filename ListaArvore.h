@@ -18,4 +18,6 @@ void lista_imprime(ListaArvore* lista);
 
 Arv* lista_retira_primeiro(ListaArvore* lista);
 
+Arv* gera_arvore_huffman(ListaArvore* lista);
+
 #endif //TRAB2_LISTAARVORE_H

@@ -141,7 +141,6 @@ Arv* lista_retira_primeiro(ListaArvore* lista)
 }
 
 
-//*****************TERMINAR ESSA FUNÇAO************************
 Arv* gera_arvore_huffman(ListaArvore* lista)
 {
     while(lista->prim->prox)
@@ -150,7 +149,17 @@ Arv* gera_arvore_huffman(ListaArvore* lista)
         Arv* b = lista_retira_primeiro(lista);
 
         int soma = arv_get_peso(a) + arv_get_peso(b);
-        Arv* novo = arv_cria(NULL, soma, a, b);
+        Arv* nova_arvore = arv_cria((char)NULL, soma, a, b);
 
+        Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
+        nova_celula->arvore = nova_arvore;
+        nova_celula->prox = NULL;
+
+        lista_insere_celula_ordenada(lista, nova_celula);
     }
+
+    Arv* retorna = lista_retira_primeiro(lista);
+    free(lista);
+
+    return retorna;
 }
