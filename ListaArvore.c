@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ListaArvore.h"
-#include "Arvore.h"
+
 
 //funçao que gera a lista com todos os caracteres
 //funçao que transforma as duas primeiras celulas em uma arvore
@@ -62,7 +62,7 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
         ant = aux;
         aux = aux->prox;
     }
-    //**************************** TERMINAR ESSA FUNÇAO ***************************
+
     if(aux == lista->prim)
     {
         celula->prox = aux;
@@ -101,7 +101,6 @@ ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor)
             nova_celula->arvore = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
             nova_celula->prox = NULL;
 
-            // TO DO
             lista_insere_celula_ordenada(lista, nova_celula);
         }
     }
@@ -123,5 +122,35 @@ void lista_imprime(ListaArvore* lista)
     {
         printf("%c\n", arv_get_char(aux->arvore));
         aux = aux->prox;
+    }
+}
+
+
+Arv* lista_retira_primeiro(ListaArvore* lista)
+{
+    if(lista_vazia(lista))
+        return NULL;
+
+    Celula* aux = lista->prim;
+    Arv* retorna = aux->arvore;
+
+    lista->prim = aux->prox;
+    free(aux);
+
+    return retorna;
+}
+
+
+//*****************TERMINAR ESSA FUNÇAO************************
+Arv* gera_arvore_huffman(ListaArvore* lista)
+{
+    while(lista->prim->prox)
+    {
+        Arv* a = lista_retira_primeiro(lista);
+        Arv* b = lista_retira_primeiro(lista);
+
+        int soma = arv_get_peso(a) + arv_get_peso(b);
+        Arv* novo = arv_cria(NULL, soma, a, b);
+
     }
 }
