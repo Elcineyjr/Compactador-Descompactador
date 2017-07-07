@@ -6,6 +6,8 @@ typedef struct lista ListaArvore;
 
 typedef struct celula Celula;
 
+Celula* cria_celula(Arv* arvore);
+
 ListaArvore* cria_lista();
 
 int lista_vazia(ListaArvore* lista);

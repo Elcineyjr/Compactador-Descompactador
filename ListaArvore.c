@@ -21,6 +21,15 @@ struct lista
     struct celula* ult;
 };
 
+Celula* cria_celula(Arv* arvore)
+{
+    Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
+
+    nova_celula->arvore = arvore;
+    nova_celula->prox = NULL;
+
+    return nova_celula;
+}
 
 ListaArvore* cria_lista()
 {
@@ -96,10 +105,8 @@ ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor)
     {
         if(vetor[i] > 0)
         {
-            Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
-
-            nova_celula->arvore = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
-            nova_celula->prox = NULL;
+            Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
+            Celula* nova_celula = cria_celula(a);
 
             lista_insere_celula_ordenada(lista, nova_celula);
         }
@@ -149,11 +156,9 @@ Arv* gera_arvore_huffman(ListaArvore* lista)
         Arv* b = lista_retira_primeiro(lista);
 
         int soma = arv_get_peso(a) + arv_get_peso(b);
-        Arv* nova_arvore = arv_cria((char)NULL, soma, a, b);
 
-        Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
-        nova_celula->arvore = nova_arvore;
-        nova_celula->prox = NULL;
+        Arv* nova_arvore = arv_cria((char)NULL, soma, a, b);
+        Celula* nova_celula = cria_celula(nova_arvore);
 
         lista_insere_celula_ordenada(lista, nova_celula);
     }
