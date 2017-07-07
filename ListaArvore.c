@@ -9,20 +9,17 @@
 //funçao que retorna a unica arvore que sobrou na lista
 
 
-struct celula
-{
+struct celula{
     Arv* arvore;
     struct celula* prox;
 };
 
-struct lista
-{
+struct lista{
     struct celula* prim;
     struct celula* ult;
 };
 
-Celula* cria_celula(Arv* arvore)
-{
+Celula* cria_celula(Arv* arvore){
     Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
 
     nova_celula->arvore = arvore;
@@ -31,8 +28,7 @@ Celula* cria_celula(Arv* arvore)
     return nova_celula;
 }
 
-ListaArvore* cria_lista()
-{
+ListaArvore* cria_lista(){
     ListaArvore* nova_lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
     nova_lista->prim = NULL;
@@ -42,20 +38,13 @@ ListaArvore* cria_lista()
 }
 
 
-int lista_vazia(ListaArvore* lista)
-{
-    if(!lista->prim)
-    {
-        return 1;
-    }
-    return 0;
+int lista_vazia(ListaArvore* lista){
+    return (lista->prim);
 }
 
 
-ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
-{
-    if(lista_vazia(lista))
-    {
+ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula){
+    if(lista_vazia(lista)){
         lista->prim = celula;
         lista->ult = celula;
 
@@ -66,28 +55,24 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
     Celula* ant = NULL;
 
 
-    while(aux && arv_get_peso(aux->arvore) < arv_get_peso(celula->arvore))
-    {
+    while(aux && arv_get_peso(aux->arvore) < arv_get_peso(celula->arvore)){
         ant = aux;
         aux = aux->prox;
     }
 
-    if(aux == lista->prim)
-    {
+    if(aux == lista->prim){
         celula->prox = aux;
         lista->prim = celula;
 
         return lista;
     }
-    if(aux == lista->ult)
-    {
+    if(aux == lista->ult){
         ant->prox = celula;
         celula->prox = aux;
 
         return lista;
     }
-    if(ant == lista->ult)
-    {
+    if(ant == lista->ult){
         lista->ult = celula;
     }
     ant->prox = celula;
@@ -97,14 +82,11 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula)
 }
 
 
-ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor)
-{
+ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor){
     ListaArvore* lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
-    for(int i = 0; i < tamanho_vetor; i++)
-    {
-        if(vetor[i] > 0)
-        {
+    for(int i = 0; i < tamanho_vetor; i++){
+        if(vetor[i] > 0){
             Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
             Celula* nova_celula = cria_celula(a);
 
@@ -116,25 +98,21 @@ ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor)
 }
 
 
-void lista_imprime(ListaArvore* lista)
-{
-    if(lista_vazia(lista))
-    {
+void lista_imprime(ListaArvore* lista){
+    if(lista_vazia(lista)){
         printf("Lista Vazia\n");
         return;
     }
 
     Celula* aux = lista->prim;
-    while(aux)
-    {
+    while(aux){
         printf("%c\n", arv_get_char(aux->arvore));
         aux = aux->prox;
     }
 }
 
 
-Arv* lista_retira_primeiro(ListaArvore* lista)
-{
+Arv* lista_retira_primeiro(ListaArvore* lista){
     if(lista_vazia(lista))
         return NULL;
 
@@ -148,10 +126,8 @@ Arv* lista_retira_primeiro(ListaArvore* lista)
 }
 
 
-Arv* gera_arvore_huffman(ListaArvore* lista)
-{
-    while(lista->prim->prox)
-    {
+Arv* gera_arvore_huffman(ListaArvore* lista){
+    while(lista->prim->prox){
         Arv* a = lista_retira_primeiro(lista);
         Arv* b = lista_retira_primeiro(lista);
 
