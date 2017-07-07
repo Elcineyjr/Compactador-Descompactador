@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Arvore.h"
+#define ID_PESO 0
+#define ID_CHAR 1
 
 struct arvore
 {
-    int id_peso_ou_char;
+    int id_no_ou_folha;
     int peso;
     char caracter;
     struct arvore* esq;
@@ -22,14 +24,16 @@ Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
 {
     Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
 
-    //preciso alocar memoria pra um unico char ???
-    //nova_arvore->caracter = (char)malloc(sizeof(char));
+
     nova_arvore->caracter = c;
-
     nova_arvore->peso = peso;
-
     nova_arvore->esq = e;
     nova_arvore->dir = d;
+
+    if( (int)c == 0 )
+        nova_arvore->id_no_ou_folha = ID_PESO;
+    else
+        nova_arvore->id_no_ou_folha = ID_CHAR;
 
     return nova_arvore;
 }
@@ -54,7 +58,6 @@ Arv* arv_libera (Arv* a)
         arv_libera(a->esq);
         arv_libera(a->dir);
         free(a);
-        //free(a->caracter);
     }
 
     return NULL;
