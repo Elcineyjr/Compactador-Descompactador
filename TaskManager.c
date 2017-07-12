@@ -24,7 +24,7 @@ void vetor_imprime(int* vetor)
     }
 }
 
-int* gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
+void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
 {
     vetor_inicializa(vetor);
 
@@ -40,6 +40,4 @@ int* gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
         *a = fgetc(arquivo);
     }
     free(a);
-
-    return vetor;
 }
