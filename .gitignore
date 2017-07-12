@@ -34,6 +34,7 @@ bin/release/trab1
 bin/
 build/
 trab1.out
+trab2.out
 ListaGenerica.c
 ListaGenerica.h
 auxFolder/
