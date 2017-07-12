@@ -14,34 +14,18 @@
 #include <stdio.h>
 #include "Arvore.h"
 #include "ListaArvore.h"
+#include "TaskManager.h"
 
 int main()
 {
-    int tam = 70;
-    int vetor[tam];
+    FILE* arquivo;
+    int vetor[255];
 
-    int i = 0;
-    while(i < tam)
-    {
-        vetor[i] = 0;
-        i++;
-    }
+    arquivo = fopen("entrada.txt", "r");
 
-    vetor[65] = 1;
-    vetor[66] = 2;
-    vetor[67] = 3;
-    vetor[68] = 4;
-    vetor[69] = 5;
+    gera_vetor_ascii_frequencia(arquivo, vetor);
 
+    vetor_imprime(vetor);
 
-    ListaArvore* a;
-
-    a = gera_lista_caractes(vetor, tam);
-
-    lista_imprime(a);
-
-    lista_retira_primeiro(a);
-    lista_retira_primeiro(a);
-    lista_imprime(a);
     return 0;
 }
