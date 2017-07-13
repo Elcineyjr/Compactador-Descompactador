@@ -24,6 +24,17 @@ void vetor_imprime(int* vetor)
     }
 }
 
+int vetor_verifica_vazio(int* vetor)
+{
+    for(int i = 0; i < 255; i++)
+    {
+        if(*(vetor+i) > 0)
+            return 0;
+    }
+    return 1;
+}
+
+
 void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
 {
     vetor_inicializa(vetor);
@@ -40,4 +51,10 @@ void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
         *a = fgetc(arquivo);
     }
     free(a);
+    
+    if(vetor_verifica_vazio(vetor))
+    {
+        printf("Arquivo vazio! O programa será abortado!\n");
+        exit(2);
+    }
 }
