@@ -86,8 +86,8 @@ ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
     ListaArvore* lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
     for(int i = 0; i < tamanho_vetor; i++){
-        if( *(vetor+i) > 0){
-            Arv* a = arv_cria((char)i, *(vetor+i), arv_criavazia(), arv_criavazia());
+        if( vetor[i] > 0){
+            Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
             Celula* nova_celula = cria_celula(a);
 
             lista_insere_celula_ordenada(lista, nova_celula);

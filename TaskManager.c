@@ -8,7 +8,7 @@ void vetor_inicializa(int* vetor)
     //Limpa todos os campos do vetor
     for(int i = 0; i < 255; i++)
     {
-        *(vetor+i) = 0;
+        vetor[i] = 0;
     }
 }
 
@@ -19,8 +19,8 @@ void vetor_imprime(int* vetor)
     for(int i = 0; i < 255; i++)
     {
         //imprime apenas os caracteres que apareceram pelo menos uma vez no arquivo
-        if ( *(vetor+i) == 0) continue;
-        printf("%c (%d) - %d\n", i, i, *(vetor+i));
+        if ( vetor[i] == 0) continue;
+        printf("%c (%d) - %d\n", i, i, vetor[i]);
     }
 }
 
@@ -28,7 +28,7 @@ int vetor_verifica_vazio(int* vetor)
 {
     for(int i = 0; i < 255; i++)
     {
-        if(*(vetor+i) > 0)
+        if(vetor[i] > 0)
             return 0;
     }
     return 1;
@@ -46,8 +46,7 @@ void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
     while(*a != EOF) //EOF = End Of File, lendo assim todos caracteres do arquivo
     {
         int i = (int)*a;
-        *(vetor+i) = *(vetor+i) + 1; //tenho que usar dessa forma
-        //*(vetor+i)++;        <------- pq isso da erro?
+        vetor[i]++;
         *a = fgetc(arquivo);
     }
     free(a);
