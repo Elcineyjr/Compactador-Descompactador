@@ -39,7 +39,7 @@ ListaArvore* cria_lista(){
 
 
 int lista_vazia(ListaArvore* lista){
-    return (lista->prim);
+    return (lista->prim == NULL);
 }
 
 
@@ -82,12 +82,12 @@ ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula){
 }
 
 
-ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor){
+ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
     ListaArvore* lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
     for(int i = 0; i < tamanho_vetor; i++){
-        if(vetor[i] > 0){
-            Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
+        if( *(vetor+i) > 0){
+            Arv* a = arv_cria((char)i, *(vetor+i), arv_criavazia(), arv_criavazia());
             Celula* nova_celula = cria_celula(a);
 
             lista_insere_celula_ordenada(lista, nova_celula);
@@ -133,7 +133,7 @@ Arv* gera_arvore_huffman(ListaArvore* lista){
 
         int soma = arv_get_peso(a) + arv_get_peso(b);
 
-        Arv* nova_arvore = arv_cria((char)NULL, soma, a, b);
+        Arv* nova_arvore = arv_cria_no_comum(soma, a, b);
         Celula* nova_celula = cria_celula(nova_arvore);
 
         lista_insere_celula_ordenada(lista, nova_celula);
