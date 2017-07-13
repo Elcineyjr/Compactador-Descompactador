@@ -13,8 +13,8 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include "Arvore.h"
-#include "ListaArvore.h"
+#include "TADs/Arvore.h"
+#include "TADs/ListaArvore.h"
 #include "TaskManager.h"
 
 int main()
