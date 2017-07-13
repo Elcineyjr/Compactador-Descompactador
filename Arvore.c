@@ -95,3 +95,18 @@ void arv_imprime(Arv* arvore)
         printf("NO COMUM: %d\n", arvore->peso);
     }
 }
+
+void arv_serializa(Arv* arvore)
+{
+    if(arv_vazia(arvore))
+        return;
+    
+    if(arvore->id_no_ou_folha == ID_CHAR)
+    {
+        printf("1%c", arvore->caracter);
+        return;
+    }    
+    printf("0");
+    arv_serializa(arvore->esq);
+    arv_serializa(arvore->dir);  
+}
