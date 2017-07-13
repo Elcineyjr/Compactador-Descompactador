@@ -19,6 +19,10 @@ Arv* arv_criavazia()
     return NULL;
 }
 
+int arv_vazia(Arv* arvore)
+{
+    return (arvore == NULL);
+}
 
 Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
 {
@@ -30,10 +34,22 @@ Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
     nova_arvore->esq = e;
     nova_arvore->dir = d;
 
-    if( (int)c == 0 )
-        nova_arvore->id_no_ou_folha = ID_PESO;
-    else
-        nova_arvore->id_no_ou_folha = ID_CHAR;
+    nova_arvore->id_no_ou_folha = ID_CHAR;
+
+    return nova_arvore;
+}
+
+
+Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d)
+{
+    Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
+
+
+    nova_arvore->peso = peso;
+    nova_arvore->esq = e;
+    nova_arvore->dir = d;
+
+    nova_arvore->id_no_ou_folha = ID_PESO;
 
     return nova_arvore;
 }
@@ -61,4 +77,21 @@ Arv* arv_libera (Arv* a)
     }
 
     return NULL;
+}
+
+void arv_imprime(Arv* arvore)
+{
+    if(arv_vazia(arvore))
+        return;
+
+    arv_imprime(arvore->esq);
+    arv_imprime(arvore->dir);
+    if(arvore->id_no_ou_folha == ID_CHAR)
+    {
+        printf("NO FOLHA: %c\n", arvore->caracter);
+    }
+    else
+    {
+        printf("NO COMUM: %d\n", arvore->peso);
+    }
 }
