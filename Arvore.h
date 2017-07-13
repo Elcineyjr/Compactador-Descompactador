@@ -21,4 +21,6 @@ char arv_get_char(Arv* arvore);
 
 void arv_imprime(Arv* arvore);
 
+void arv_serializa(Arv* arvore);
+
 #endif //TRAB2_ARVORE_H
