@@ -22,7 +22,7 @@ int main()
     FILE* arquivo;
     int vetor[255];
 
-    arquivo = fopen("jobson.txt", "r");
+    arquivo = fopen("entrada.txt", "r");
     
     if(arquivo == NULL)
     {
@@ -32,17 +32,20 @@ int main()
     
     gera_vetor_ascii_frequencia(arquivo, vetor);
 
-    vetor_imprime(vetor);
+    //vetor_imprime(vetor);
 
     ListaArvore* nova_lista = gera_lista_caractes(vetor, 255);
-    printf("11111111111\n");
+    //printf("11111111111\n");
 
     //lista_imprime(nova_lista);
 
     Arv* nova_arv = gera_arvore_huffman(nova_lista);
-    printf("22222222222\n");
+    //printf("22222222222\n");
 
-    arv_imprime(nova_arv);
+    //arv_imprime(nova_arv);
+    
+    arv_serializa(nova_arv);
+    printf("\n");
 
     fclose(arquivo);
     return 0;
