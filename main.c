@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "TADs/Arvore.h"
 #include "TADs/ListaArvore.h"
-#include "TaskManager.h"
+#include "Compacta.h"
 
 int main()
 {

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "TaskManager.h"
+#include "Compacta.h"
 
 
 void vetor_inicializa(int* vetor)

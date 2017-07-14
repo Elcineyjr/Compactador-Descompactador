@@ -1,5 +1,5 @@
-#ifndef TRAB2_TASKMANAGER_H
-#define TRAB2_TASKMANAGER_H
+#ifndef TRAB2_COMPACTA_H
+#define TRAB2_COMPACTA_H
 
 /*
 *Input: -Arquivo
@@ -11,4 +11,4 @@ void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor);
 
 void vetor_imprime(int* vetor);
 
-#endif //TRAB2_TASKMANAGER_H
+#endif //TRAB2_COMPACTA_H
