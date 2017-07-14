@@ -19,6 +19,8 @@ struct lista{
     struct celula* ult;
 };
 
+
+//Cria uma celula e insere uma arvore na nova celula 
 Celula* cria_celula(Arv* arvore){
     Celula* nova_celula = (Celula*)malloc(sizeof(Celula));
 
@@ -28,6 +30,8 @@ Celula* cria_celula(Arv* arvore){
     return nova_celula;
 }
 
+
+//Cria uma lista de arvore vazia
 ListaArvore* cria_listaarvore(){
     ListaArvore* nova_lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
@@ -38,11 +42,13 @@ ListaArvore* cria_listaarvore(){
 }
 
 
+//Verifica se a lista de arvore é vazia
 int listaarvore_vazia(ListaArvore* lista){
     return (lista->prim == NULL);
 }
 
 
+//Insere uma celula na lista, ordenada pelo peso do caracter da celula
 ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celula){
     if(listaarvore_vazia(lista)){
         lista->prim = celula;
@@ -54,12 +60,13 @@ ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celu
     Celula* aux = lista->prim;
     Celula* ant = NULL;
 
-
+    //itera a lista até achar a celula que será a prox da celula a ser inserida
     while(aux && arv_get_peso(aux->arvore) < arv_get_peso(celula->arvore)){
         ant = aux;
         aux = aux->prox;
     }
 
+    //verificaçao de onde a nova celula será inserida e atualizaçao dos ponteiros prim e ult
     if(aux == lista->prim){
         celula->prox = aux;
         lista->prim = celula;
@@ -82,14 +89,18 @@ ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celu
 }
 
 
+//Gera uma lista com todos os caracteres do arquivo atraves do vetor ASCII
 ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
     ListaArvore* lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
     for(int i = 0; i < tamanho_vetor; i++){
+        //vetor[i] indica a frequencia de cada caracter no arquivo
+        //ou seja, se o caracter aparecer no arquivo pelo menos uma vez será inserido na lista
         if( vetor[i] > 0){
             Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
             Celula* nova_celula = cria_celula(a);
 
+            //insere o caracter na lista ordenando pela sua frequencia no arquivo 
             listaarvore_insere_celula_ordenada(lista, nova_celula);
         }
     }
@@ -98,6 +109,7 @@ ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
 }
 
 
+//Imprime uma lista de caracteres
 void listaarvore_imprime(ListaArvore* lista){
     if(listaarvore_vazia(lista)){
         printf("Lista Vazia\n");
@@ -112,6 +124,7 @@ void listaarvore_imprime(ListaArvore* lista){
 }
 
 
+//Retorna a arvore da primeira celula da lista e destroi a celula 
 Arv* listaarvore_retira_primeiro(ListaArvore* lista){
     if(listaarvore_vazia(lista))
         return NULL;
@@ -126,6 +139,7 @@ Arv* listaarvore_retira_primeiro(ListaArvore* lista){
 }
 
 
+//Gera a arvore otima
 Arv* gera_arvore_huffman(ListaArvore* lista){
     while(lista->prim->prox){
         Arv* a = listaarvore_retira_primeiro(lista);
