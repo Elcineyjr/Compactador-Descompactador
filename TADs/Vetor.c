@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Compacta.h"
+#include "Vetor.h"
 
 
 void vetor_inicializa(int* vetor)
