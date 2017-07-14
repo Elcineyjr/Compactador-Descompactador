@@ -110,3 +110,27 @@ void arv_serializa(Arv* arvore)
     arv_serializa(arvore->esq);
     arv_serializa(arvore->dir);  
 }
+
+
+int procura_caminho(char c, Arv* arvore, ListaBits* lista){
+    if(arvore){
+        if(arvore->caracter == c){
+            return 1;
+        }
+    }else{
+        return 0;
+    }
+
+    if(procura_caminho(c, arvore->esq, lista)){
+        listabits_insere_inicio(lista, 0);
+        return 1;
+    }
+
+    if(procura_caminho(c, arvore->dir, lista)){
+        listabits_insere_inicio(lista, 1);
+        return 1;
+    }
+
+    return 0;
+}
+
