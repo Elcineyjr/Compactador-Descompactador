@@ -15,7 +15,9 @@
 #include <stdlib.h>
 #include "TADs/Arvore.h"
 #include "TADs/ListaArvore.h"
-#include "Compacta.h"
+#include "TADs/Vetor.h"
+#include "TADs/ListaBits.h"
+
 
 int main()
 {
@@ -35,18 +37,60 @@ int main()
     //vetor_imprime(vetor);
 
     ListaArvore* nova_lista = gera_lista_caractes(vetor, 255);
-    //printf("11111111111\n");
 
     //lista_imprime(nova_lista);
 
     Arv* nova_arv = gera_arvore_huffman(nova_lista);
-    //printf("22222222222\n");
 
-    //arv_imprime(nova_arv);
+    // printf("ARVORE::::::::\n");
+    // arv_imprime(nova_arv);
     
-    arv_serializa(nova_arv);
-    printf("\n");
+    // arv_serializa(nova_arv);
+    // printf("\n");
 
+    ListaBits* lista_bits = listabits_cria();
+    procura_caminho('b', nova_arv, lista_bits);
+    printf("CAMINHO B:\n");
+    listabits_imprime(lista_bits);
+    
+    ListaBits* lista_bits2 = listabits_cria();
+    procura_caminho('o', nova_arv, lista_bits2);
+    printf("CAMINHO O:\n");
+    listabits_imprime(lista_bits2);
+    
+    ListaBits* lista_bits3 = listabits_cria();
+    procura_caminho('m', nova_arv, lista_bits3);
+    printf("CAMINHO M:\n");
+    listabits_imprime(lista_bits3);
+    
+    
+    ListaBits* lista_final = listabits_cria();
+    listabits_insere_lista_no_final(lista_final, lista_bits);
+    listabits_insere_lista_no_final(lista_final, lista_bits2);
+    listabits_insere_lista_no_final(lista_final, lista_bits3);
+    
+    printf("LISTA FINAL:\n");
+    listabits_imprime(lista_final);
+    
     fclose(arquivo);
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
