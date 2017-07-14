@@ -67,7 +67,7 @@ char arv_get_char(Arv* arvore)
 }
 
 
-Arv* arv_libera (Arv* a)
+void arv_libera (Arv* a)
 {
     if(a)
     {
@@ -75,8 +75,6 @@ Arv* arv_libera (Arv* a)
         arv_libera(a->dir);
         free(a);
     }
-
-    return NULL;
 }
 
 void arv_imprime(Arv* arvore)
