@@ -8,17 +8,17 @@ typedef struct celula Celula;
 
 Celula* cria_celula(Arv* arvore);
 
-ListaArvore* cria_lista();
+ListaArvore* cria_listaarvore();
 
-int lista_vazia(ListaArvore* lista);
+int listaarvore_vazia(ListaArvore* lista);
 
-ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula);
+ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celula);
 
 ListaArvore* gera_lista_caractes(int vetor[], int tamanho_vetor);
 
-void lista_imprime(ListaArvore* lista);
+void listaarvore_imprime(ListaArvore* lista);
 
-Arv* lista_retira_primeiro(ListaArvore* lista);
+Arv* listaarvore_retira_primeiro(ListaArvore* lista);
 
 Arv* gera_arvore_huffman(ListaArvore* lista);
 

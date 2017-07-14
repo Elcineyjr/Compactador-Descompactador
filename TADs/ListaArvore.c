@@ -28,7 +28,7 @@ Celula* cria_celula(Arv* arvore){
     return nova_celula;
 }
 
-ListaArvore* cria_lista(){
+ListaArvore* cria_listaarvore(){
     ListaArvore* nova_lista = (ListaArvore*)malloc(sizeof(ListaArvore));
 
     nova_lista->prim = NULL;
@@ -38,13 +38,13 @@ ListaArvore* cria_lista(){
 }
 
 
-int lista_vazia(ListaArvore* lista){
+int listaarvore_vazia(ListaArvore* lista){
     return (lista->prim == NULL);
 }
 
 
-ListaArvore* lista_insere_celula_ordenada(ListaArvore* lista, Celula* celula){
-    if(lista_vazia(lista)){
+ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celula){
+    if(listaarvore_vazia(lista)){
         lista->prim = celula;
         lista->ult = celula;
 
@@ -90,7 +90,7 @@ ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
             Arv* a = arv_cria((char)i, vetor[i], arv_criavazia(), arv_criavazia());
             Celula* nova_celula = cria_celula(a);
 
-            lista_insere_celula_ordenada(lista, nova_celula);
+            listaarvore_insere_celula_ordenada(lista, nova_celula);
         }
     }
 
@@ -98,8 +98,8 @@ ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
 }
 
 
-void lista_imprime(ListaArvore* lista){
-    if(lista_vazia(lista)){
+void listaarvore_imprime(ListaArvore* lista){
+    if(listaarvore_vazia(lista)){
         printf("Lista Vazia\n");
         return;
     }
@@ -112,8 +112,8 @@ void lista_imprime(ListaArvore* lista){
 }
 
 
-Arv* lista_retira_primeiro(ListaArvore* lista){
-    if(lista_vazia(lista))
+Arv* listaarvore_retira_primeiro(ListaArvore* lista){
+    if(listaarvore_vazia(lista))
         return NULL;
 
     Celula* aux = lista->prim;
@@ -128,18 +128,18 @@ Arv* lista_retira_primeiro(ListaArvore* lista){
 
 Arv* gera_arvore_huffman(ListaArvore* lista){
     while(lista->prim->prox){
-        Arv* a = lista_retira_primeiro(lista);
-        Arv* b = lista_retira_primeiro(lista);
+        Arv* a = listaarvore_retira_primeiro(lista);
+        Arv* b = listaarvore_retira_primeiro(lista);
 
         int soma = arv_get_peso(a) + arv_get_peso(b);
 
         Arv* nova_arvore = arv_cria_no_comum(soma, a, b);
         Celula* nova_celula = cria_celula(nova_arvore);
 
-        lista_insere_celula_ordenada(lista, nova_celula);
+        listaarvore_insere_celula_ordenada(lista, nova_celula);
     }
 
-    Arv* retorna = lista_retira_primeiro(lista);
+    Arv* retorna = listaarvore_retira_primeiro(lista);
     free(lista);
 
     return retorna;
