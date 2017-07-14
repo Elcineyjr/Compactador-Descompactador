@@ -1,3 +1,4 @@
+#include "ListaBits.h"
 #ifndef TRAB2_ARVORE_H
 #define TRAB2_ARVORE_H
 
@@ -5,6 +6,8 @@ typedef struct arvore Arv;
 
 //Cria uma árvore vazia
 Arv* arv_criavazia (void);
+
+int arv_vazia(Arv* arvore);
 
 //cria uma árvore com a informação do nó raiz c, e
 //com subárvore esquerda e e subárvore direita d
@@ -22,5 +25,7 @@ char arv_get_char(Arv* arvore);
 void arv_imprime(Arv* arvore);
 
 void arv_serializa(Arv* arvore);
+
+int procura_caminho(char c, Arv* arvore, ListaBits* lista);
 
 #endif //TRAB2_ARVORE_H
