@@ -1,4 +1,3 @@
-#include "ListaBits.h"
 #ifndef TRAB2_ARVORE_H
 #define TRAB2_ARVORE_H
 
@@ -81,14 +80,7 @@ void arv_imprime(Arv* arvore);
 */
 void arv_serializa(Arv* arvore);
 
-/*
-*Input: -char
-        -Arvore a se procrar o char
-        -Lista a ser inserido o caminho achado
-*Output: int pois é recursiva
-*Pre-condiçao: Arvore e lista existentes
-*Pos-condiçao: Caminho ate o caracter inserido na lista dada
-*/
-int procura_caminho(char c, Arv* arvore, ListaBits* lista);
+Arv* arv_retorna_esq(Arv* arvore);
 
+Arv* arv_retorna_dir(Arv* arvore);
 #endif //TRAB2_ARVORE_H

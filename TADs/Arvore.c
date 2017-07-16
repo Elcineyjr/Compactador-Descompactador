@@ -74,6 +74,18 @@ char arv_get_char(Arv* arvore)
 }
 
 
+//retorna a arvore da esquerda
+Arv* arv_retorna_esq(Arv* arvore){
+    return arvore->esq;
+}
+
+
+//retorna a arvore da direita
+Arv* arv_retorna_dir(Arv* arvore){
+    return arvore->dir;
+}
+
+
 //Libera uma arvore
 void arv_libera (Arv* a)
 {
@@ -122,25 +134,6 @@ void arv_serializa(Arv* arvore)
 }
 
 
-//Procura o caminho do caracter na arvore
-int procura_caminho(char c, Arv* arvore, ListaBits* lista){
-    if(arvore){
-        if(arvore->caracter == c){
-            return 1;
-        }
-    }else{
-        return 0;
-    }
 
-    if(procura_caminho(c, arvore->esq, lista)){
-        listabits_insere_inicio(lista, 0);
-        return 1;
-    }
 
-    if(procura_caminho(c, arvore->dir, lista)){
-        listabits_insere_inicio(lista, 1);
-        return 1;
-    }
 
-    return 0;
-}

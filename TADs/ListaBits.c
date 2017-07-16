@@ -31,6 +31,13 @@ int listabits_vazia(ListaBits* lista){
 }
 
 
+//Limpa uma lista de bits
+void listabits_limpa(ListaBits* lista){
+    lista->prim = NULL;
+    lista->ult = NULL;
+}
+
+
 //insere um unico bit no inicio da lista
 void listabits_insere_inicio(ListaBits* lista, int bit){
     CelulaBit* nova_celula = (CelulaBit*)malloc(sizeof(CelulaBit));
@@ -64,6 +71,11 @@ void listabits_libera(ListaBits* lista){
 
 //imprime um lista de bits
 void listabits_imprime(ListaBits* lista){
+    if(listabits_vazia(lista)){
+        printf("Lista de Bits vazia!!\n");
+        return;
+    }
+    
     CelulaBit* aux = lista->prim;
     
     while(aux)
@@ -87,3 +99,8 @@ void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista){
     destino->ult->prox = lista->prim;
     destino->ult = lista->ult;
 }
+
+
+
+
+

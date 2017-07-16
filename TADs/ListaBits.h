@@ -19,6 +19,9 @@ ListaBits* listabits_cria();
 */
 int listabits_vazia(ListaBits* lista);
 
+
+void listabits_limpa(ListaBits* lista);
+
 /*
 *Input: -Lista de bits existente
         -bit a ser inserido

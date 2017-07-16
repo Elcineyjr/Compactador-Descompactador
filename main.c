@@ -17,7 +17,7 @@
 #include "TADs/ListaArvore.h"
 #include "TADs/Vetor.h"
 #include "TADs/ListaBits.h"
-
+#include "Compacta.h"
 
 int main()
 {
@@ -36,6 +36,7 @@ int main()
     gera_vetor_ascii_frequencia(arquivo, vetor);
     printf("IMPRIMINDO VETOR\n");
     vetor_imprime(vetor);
+    fclose(arquivo);
 
     printf("\n");
 
@@ -50,12 +51,18 @@ int main()
     Arv* nova_arv = gera_arvore_huffman(nova_lista);
     printf("IMPRIMINDO ARVORE OTIMA:\n");
     arv_imprime(nova_arv);
-    printf("LIBERANDO ARVORE OTIMA:\n");
-    arv_libera(nova_arv);
-    // arv_serializa(nova_arv);
     
+    printf("SERIALIZANDO ARVORE:\n");
+    arv_serializa(nova_arv);
+    printf("\n");
 
 
+    arquivo = fopen("entrada.txt", "r");
+    ListaBits* lista_teste = listabits_cria();
+    gera_lista_final_de_caminhos(arquivo, nova_arv, lista_teste);
+    listabits_imprime(lista_teste);
+    
+    
     // ListaBits* lista_bits = listabits_cria();
     // procura_caminho('b', nova_arv, lista_bits);
     // printf("CAMINHO B:\n");
@@ -68,6 +75,9 @@ int main()
     // 
     // printf("LISTA FINAL:\n");
     // listabits_imprime(lista_final);
+    
+    printf("LIBERANDO ARVORE OTIMA:\n");
+    arv_libera(nova_arv);
     
     fclose(arquivo);
     return 0;
