@@ -3,12 +3,6 @@
 #include "ListaArvore.h"
 
 
-//funçao que gera a lista com todos os caracteres
-//funçao que transforma as duas primeiras celulas em uma arvore
-//funçao que insere a arvore na lista (ordenada)
-//funçao que retorna a unica arvore que sobrou na lista
-
-
 struct celula{
     Arv* arvore;
     struct celula* prox;
@@ -92,7 +86,9 @@ ListaArvore* listaarvore_insere_celula_ordenada(ListaArvore* lista, Celula* celu
 //Gera uma lista com todos os caracteres do arquivo atraves do vetor ASCII
 ListaArvore* gera_lista_caractes(int* vetor, int tamanho_vetor){
     ListaArvore* lista = (ListaArvore*)malloc(sizeof(ListaArvore));
-
+    lista->prim = NULL;
+    lista->ult = NULL;
+    
     for(int i = 0; i < tamanho_vetor; i++){
         //vetor[i] indica a frequencia de cada caracter no arquivo
         //ou seja, se o caracter aparecer no arquivo pelo menos uma vez será inserido na lista
