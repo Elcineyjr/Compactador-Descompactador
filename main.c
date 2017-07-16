@@ -32,45 +32,42 @@ int main()
         exit(1);
     }
     
+    printf("GERANDO VETOR COM FREQUENCIA DOS CARACTERES:\n");
     gera_vetor_ascii_frequencia(arquivo, vetor);
+    printf("IMPRIMINDO VETOR\n");
+    vetor_imprime(vetor);
 
-    //vetor_imprime(vetor);
+    printf("\n");
 
+    printf("GERANDO LISTA DE CARACTERES:\n");
     ListaArvore* nova_lista = gera_lista_caractes(vetor, 255);
+    printf("IMPRIMINDO LISTA DE CARACTERES:\n");
+    listaarvore_imprime(nova_lista);
 
-    //lista_imprime(nova_lista);
+    printf("\n");
 
+    printf("GERANDO ARVORE OTIMA:\n");
     Arv* nova_arv = gera_arvore_huffman(nova_lista);
-
-    // printf("ARVORE::::::::\n");
-    // arv_imprime(nova_arv);
-    
+    printf("IMPRIMINDO ARVORE OTIMA:\n");
+    arv_imprime(nova_arv);
+    printf("LIBERANDO ARVORE OTIMA:\n");
+    arv_libera(nova_arv);
     // arv_serializa(nova_arv);
-    // printf("\n");
+    
 
-    ListaBits* lista_bits = listabits_cria();
-    procura_caminho('b', nova_arv, lista_bits);
-    printf("CAMINHO B:\n");
-    listabits_imprime(lista_bits);
-    
-    ListaBits* lista_bits2 = listabits_cria();
-    procura_caminho('o', nova_arv, lista_bits2);
-    printf("CAMINHO O:\n");
-    listabits_imprime(lista_bits2);
-    
-    ListaBits* lista_bits3 = listabits_cria();
-    procura_caminho('m', nova_arv, lista_bits3);
-    printf("CAMINHO M:\n");
-    listabits_imprime(lista_bits3);
-    
-    
-    ListaBits* lista_final = listabits_cria();
-    listabits_insere_lista_no_final(lista_final, lista_bits);
-    listabits_insere_lista_no_final(lista_final, lista_bits2);
-    listabits_insere_lista_no_final(lista_final, lista_bits3);
-    
-    printf("LISTA FINAL:\n");
-    listabits_imprime(lista_final);
+
+    // ListaBits* lista_bits = listabits_cria();
+    // procura_caminho('b', nova_arv, lista_bits);
+    // printf("CAMINHO B:\n");
+    // listabits_imprime(lista_bits);
+    // 
+    // 
+    // 
+    // ListaBits* lista_final = listabits_cria();
+    // listabits_insere_lista_no_final(lista_final, lista_bits);
+    // 
+    // printf("LISTA FINAL:\n");
+    // listabits_imprime(lista_final);
     
     fclose(arquivo);
     return 0;
