@@ -13,17 +13,21 @@ struct arvore
     struct arvore* dir;
 };
 
-
+//Cria uma arvore vazia
 Arv* arv_criavazia()
 {
     return NULL;
 }
 
+
+//Verifica se uma arvore é vazia
 int arv_vazia(Arv* arvore)
 {
     return (arvore == NULL);
 }
 
+
+//Cria uma arvore FOLHA (com caracter)
 Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
 {
     Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
@@ -40,6 +44,7 @@ Arv* arv_cria (char c, int peso, Arv* e, Arv* d)
 }
 
 
+//Cria uma arvore sem caracter
 Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d)
 {
     Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
@@ -55,18 +60,21 @@ Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d)
 }
 
 
+//Retorna o peso de uma arvore
 int arv_get_peso(Arv* arvore)
 {
     return arvore->peso;
 }
 
 
+//retorna o caracter de uma arvore
 char arv_get_char(Arv* arvore)
 {
     return arvore->caracter;
 }
 
 
+//Libera uma arvore
 void arv_libera (Arv* a)
 {
     if(a)
@@ -77,6 +85,8 @@ void arv_libera (Arv* a)
     }
 }
 
+
+//Imprime uma arvore
 void arv_imprime(Arv* arvore)
 {
     if(arv_vazia(arvore))
@@ -94,6 +104,8 @@ void arv_imprime(Arv* arvore)
     }
 }
 
+
+//Faz o processo de serialização de uma arvore
 void arv_serializa(Arv* arvore)
 {
     if(arv_vazia(arvore))
@@ -110,6 +122,7 @@ void arv_serializa(Arv* arvore)
 }
 
 
+//Procura o caminho do caracter na arvore
 int procura_caminho(char c, Arv* arvore, ListaBits* lista){
     if(arvore){
         if(arvore->caracter == c){
@@ -131,4 +144,3 @@ int procura_caminho(char c, Arv* arvore, ListaBits* lista){
 
     return 0;
 }
-
