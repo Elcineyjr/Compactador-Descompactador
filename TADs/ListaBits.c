@@ -7,7 +7,6 @@ struct celula{
     struct celula* prox;
 };
 
-typedef struct celula CelulaBit;
 
 struct listaBits{
     CelulaBit* prim;
@@ -35,6 +34,20 @@ int listabits_vazia(ListaBits* lista){
 void listabits_limpa(ListaBits* lista){
     lista->prim = NULL;
     lista->ult = NULL;
+}
+
+
+//insere uma celula em uma lista
+void listabits_insere_celula(ListaBits* lista, CelulaBit* celula){
+    if(listabits_vazia(lista)){
+        lista->prim = celula;
+        lista->ult = celula;
+        return;
+    }
+    
+    celula->prox = NULL;
+    lista->ult->prox = celula;
+    lista->ult = celula;
 }
 
 
@@ -100,6 +113,29 @@ void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista){
     destino->ult = lista->ult;
 }
 
+
+//Pega os primeiros 8 elementos de uma lista e insere em uma nova
+void listabits_pega_oito_primeiros(ListaBits* lista_geral, ListaBits* lista_nova){
+    if(listabits_vazia(lista_geral)){
+        printf("Lista geral de bits está vazia!!\n");
+        return;
+    }
+    
+    int i = 0;
+    CelulaBit* aux = lista_geral->prim;
+    CelulaBit* aux2;
+    while(aux && i < 8){
+        aux2 = aux->prox;
+        listabits_insere_celula(lista_nova, aux);
+        aux = aux2;
+        i++;
+    }
+    
+    lista_geral->prim = aux;
+    if(!aux)
+        lista_geral->ult = NULL;
+    
+}
 
 
 

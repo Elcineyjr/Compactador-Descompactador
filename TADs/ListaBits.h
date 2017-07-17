@@ -3,6 +3,8 @@
 
 typedef struct listaBits ListaBits;
 
+typedef struct celula CelulaBit;
+
 /*
 *Input: Nenhum
 *Output: Lista de bits vazia
@@ -21,6 +23,8 @@ int listabits_vazia(ListaBits* lista);
 
 
 void listabits_limpa(ListaBits* lista);
+
+void listabits_insere_celula(ListaBits* lista, CelulaBit* celula);
 
 /*
 *Input: -Lista de bits existente
@@ -55,5 +59,7 @@ void listabits_imprime(ListaBits* lista);
 *Pós-condiçao: Lista inserida no final da ista destino 
 */
 void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista);
+
+void listabits_pega_oito_primeiros(ListaBits* lista_geral, ListaBits* lista_nova);
 
 #endif //TRAB2_LISTABITS_H

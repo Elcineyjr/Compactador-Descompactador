@@ -58,9 +58,21 @@ int main()
 
 
     arquivo = fopen("entrada.txt", "r");
-    ListaBits* lista_teste = listabits_cria();
-    gera_lista_final_de_caminhos(arquivo, nova_arv, lista_teste);
-    listabits_imprime(lista_teste);
+    ListaBits* lista_caminhos = listabits_cria();
+    gera_lista_final_de_caminhos(arquivo, nova_arv, lista_caminhos);
+    listabits_imprime(lista_caminhos);
+    
+    
+    printf("RETIRANDO OITO PRIMEIROS:\n");
+    ListaBits* lista = listabits_cria();
+    listabits_pega_oito_primeiros(lista_caminhos, lista);
+    
+    
+    printf("IMPRIMINDO OS OITO:\n");
+    listabits_imprime(lista);
+    printf("IMPRIMINDO A GERAL:\n");
+    listabits_imprime(lista_caminhos);
+    
     
     
     // ListaBits* lista_bits = listabits_cria();
