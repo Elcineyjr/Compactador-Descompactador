@@ -78,9 +78,21 @@ void arv_imprime(Arv* arvore);
 *Pre-condiçao: arvore existente
 *Pos-condiçao: Imprime toda a arvore de maneira compacta para ser usada no arquivo de saida
 */
-void arv_serializa(Arv* arvore);
+void arv_serializa(Arv* arvore, FILE* arquivo);
 
+/*
+*Input: Arvore
+*Output: Arvore
+*Pre-condiçao: arvore existente
+*Pós-condiçao: arvore da esquerda retornada
+*/
 Arv* arv_retorna_esq(Arv* arvore);
 
+/*
+*Input: Arvore
+*Output: Arvore
+*Pre-condiçao: arvore existente
+*Pós-condiçao: arvore da direita retornada
+*/
 Arv* arv_retorna_dir(Arv* arvore);
 #endif //TRAB2_ARVORE_H
