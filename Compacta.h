@@ -2,6 +2,7 @@
 #include "TADs/ListaArvore.h"
 #include "TADs/Vetor.h"
 #include "TADs/ListaBits.h"
+#include "TADs/bitmap.h"
 #ifndef TRAB2_COMPACTA_H
 #define TRAB2_COMPACTA_H
 
@@ -16,5 +17,7 @@
 int procura_caminho(char c, Arv* arvore, ListaBits* lista);
 
 void gera_lista_final_de_caminhos(FILE* arquivo, Arv* arvore_otima, ListaBits* lista_final);
+
+void compacta_arquivo(FILE* arquivo_entrada);
 
 #endif //TRAB2_COMPACTA_H

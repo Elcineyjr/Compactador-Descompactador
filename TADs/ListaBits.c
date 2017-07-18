@@ -115,7 +115,7 @@ void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista){
 
 
 //Pega os primeiros 8 elementos de uma lista e insere em uma nova
-void listabits_pega_oito_primeiros(ListaBits* lista_geral, ListaBits* lista_nova){
+void listabits_pega_sete_primeiros(ListaBits* lista_geral, ListaBits* lista_nova){
     if(listabits_vazia(lista_geral)){
         printf("Lista geral de bits está vazia!!\n");
         return;
@@ -124,7 +124,8 @@ void listabits_pega_oito_primeiros(ListaBits* lista_geral, ListaBits* lista_nova
     int i = 0;
     CelulaBit* aux = lista_geral->prim;
     CelulaBit* aux2;
-    while(aux && i < 8){
+    //pega as primeiras 7 celulas da lista_geral e insere na lista_nova
+    while(aux && i < 7){
         aux2 = aux->prox;
         listabits_insere_celula(lista_nova, aux);
         aux = aux2;
@@ -132,11 +133,75 @@ void listabits_pega_oito_primeiros(ListaBits* lista_geral, ListaBits* lista_nova
     }
     
     lista_geral->prim = aux;
+    //se aux for nulo significa que toda a lista está vazia
     if(!aux)
-        lista_geral->ult = NULL;
-    
+        lista_geral->ult = NULL;    
 }
 
 
+//confere o tamanho de uma lista
+int listabits_tamanho(ListaBits* lista){
+    CelulaBit* aux = lista->prim;
+    int i = 0;
+    
+    while(aux){
+        i++;
+        aux = aux->prox;
+    }
+    return i;
+}
+
+
+//completa uma lista de bits com 0
+void listabits_completa_com_zeros(ListaBits* lista){
+    int tamanho_lista = listabits_tamanho(lista);
+    
+    while (tamanho_lista < 8){
+        CelulaBit* nova_celula = (CelulaBit*)malloc(sizeof(CelulaBit));
+        nova_celula->bit = 0;
+        nova_celula->prox = NULL;
+        
+        lista->ult->prox = nova_celula;
+        lista->ult = nova_celula;
+        tamanho_lista = listabits_tamanho(lista);
+    }    
+}
+
+//percorre a lista até achar a celula com index dado
+int listabits_retorna_bit_por_index(ListaBits* lista, int index){
+    CelulaBit* aux = lista->prim;
+    //CelulaBit* ant = NULL;
+    int i = 0;
+    
+    while(i < index){
+        //ant = aux;
+        aux = aux->prox;
+        i++;
+    }
+    // if(aux == lista->prim && aux == lista->ult){
+    //     lista->prim = NULL;
+    //     lista->ult = NULL;
+    //     int bit = aux->bit;
+    //     free(aux);
+    //     return bit;
+    // }
+    // if(aux == lista->prim){
+    //     lista->prim = aux->prox;
+    //     int bit = aux->bit;
+    //     free(aux);
+    //     return bit;
+    // }
+    // if(aux == lista->ult){
+    //     ant->prox = NULL;
+    //     lista->ult = ant;
+    //     int bit = aux->bit;
+    //     free(aux);
+    //     return bit;
+    // }
+    // ant->prox = aux->prox;
+    int bit = aux->bit;
+    // free(aux);
+    return bit;
+}
 
 
