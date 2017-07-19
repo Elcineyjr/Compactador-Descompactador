@@ -18,6 +18,7 @@
 #include "TADs/Vetor.h"
 #include "TADs/ListaBits.h"
 #include "Compacta.h"
+#include <ctype.h>
 
 int main()
 {

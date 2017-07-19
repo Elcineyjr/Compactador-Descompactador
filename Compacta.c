@@ -61,15 +61,15 @@ void comprime_lista_caminhos(FILE* arquivo, ListaBits* lista_caminhos){
         }
         
         bitmap bit = bitmapInit(8);
-        printf("Imprimindo os bits:");
+        //printf("Imprimindo os bits:");
 
         for(int i = 0; i < 8; i++){
             printf("%d", listabits_retorna_bit_por_index(lista_quebrada, i));
             bitmapAppendLeastSignificantBit(&bit, listabits_retorna_bit_por_index(lista_quebrada, i));
         }
         unsigned char* novo_char = bitmapGetContents(bit);
-        printf("\nQue representa o char: %c\n", *novo_char + ' ');
-        fprintf(arquivo, "%c", *novo_char + ' ');
+        //printf("\nQue representa o char: %c\n", *novo_char);
+        fprintf(arquivo, "%c", *novo_char);
         listabits_libera(lista_quebrada);
     }
     //free(lista_quebrada);
@@ -107,7 +107,7 @@ void compacta_arquivo(FILE* arquivo_entrada){
     gera_lista_final_de_caminhos(arquivo_entrada, arvore_otima, lista_caminhos);
     
     //quebra a lista de caminhos e transforma em caracteres 
-    comprime_lista_caminhos(arquivo_entrada, lista_caminhos);
+    comprime_lista_caminhos(arquivo_saida, lista_caminhos);
     
     //********** TERMINAR FUNÇAO ***************
 }
