@@ -102,6 +102,8 @@ void listabits_imprime(ListaBits* lista){
 //concatena duas listas de bits
 void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista){
     //se a lista destino for vazia a nova lista será inserida no inicio
+    if(listabits_vazia(lista))
+        return;
     if(listabits_vazia(destino)){
         destino->prim = lista->prim;
         destino->ult = lista->ult;

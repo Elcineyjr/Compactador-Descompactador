@@ -5,7 +5,7 @@
 
 
 //Procura o caminho do caracter na arvore e insere na lista 
-int procura_caminho(char c, Arv* arvore, ListaBits* lista){
+int procura_caminho(unsigned char c, Arv* arvore, ListaBits* lista){
     if(arvore){
         if(arv_get_char(arvore) == c){
             return 1;
@@ -33,7 +33,7 @@ void gera_lista_final_de_caminhos(FILE* arquivo, Arv* arvore_otima, ListaBits* l
     ListaBits* lista_temporaria = listabits_cria();
     
     //aloca espaço pra um caracter e entao le o primeiro do arquivo
-    char* a = (char*)malloc(sizeof(char));
+    unsigned char* a = (unsigned char*)malloc(sizeof(char));
     *a = fgetc(arquivo);
 
     while(*a != EOF) //EOF = End Of File, lendo assim todos caracteres do arquivo
@@ -42,6 +42,8 @@ void gera_lista_final_de_caminhos(FILE* arquivo, Arv* arvore_otima, ListaBits* l
         procura_caminho(*a, arvore_otima, lista_temporaria);
         listabits_insere_lista_no_final(lista_final, lista_temporaria);
         *a = fgetc(arquivo);
+        if(*a == 255)
+            break;
     }
     free(a);
     free(lista_temporaria);
@@ -64,7 +66,7 @@ void comprime_lista_caminhos(FILE* arquivo, ListaBits* lista_caminhos){
         //printf("Imprimindo os bits:");
 
         for(int i = 0; i < 8; i++){
-            printf("%d", listabits_retorna_bit_por_index(lista_quebrada, i));
+            //printf("%d", listabits_retorna_bit_por_index(lista_quebrada, i));
             bitmapAppendLeastSignificantBit(&bit, listabits_retorna_bit_por_index(lista_quebrada, i));
         }
         unsigned char* novo_char = bitmapGetContents(bit);

@@ -25,7 +25,7 @@ int main()
     FILE* arquivo;
     //int vetor[255];
 
-    arquivo = fopen("entrada.txt", "r");
+    arquivo = fopen("skate_spider.png", "r");
     
     if(arquivo == NULL)
     {

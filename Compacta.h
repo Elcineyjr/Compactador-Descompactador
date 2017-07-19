@@ -14,7 +14,7 @@
 *Pre-condiçao: Arvore e lista existentes
 *Pos-condiçao: Caminho ate o caracter inserido na lista dada
 */
-int procura_caminho(char c, Arv* arvore, ListaBits* lista);
+int procura_caminho(unsigned char c, Arv* arvore, ListaBits* lista);
 
 void gera_lista_final_de_caminhos(FILE* arquivo, Arv* arvore_otima, ListaBits* lista_final);
 

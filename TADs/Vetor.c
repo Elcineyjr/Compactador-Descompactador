@@ -40,7 +40,7 @@ void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
     vetor_inicializa(vetor);
 
     //aloca espaço pra um caracter e entao le o primeiro do arquivo
-    char* a = (char*)malloc(sizeof(char));
+    unsigned char* a = (unsigned char*)malloc(sizeof(char));
     *a = fgetc(arquivo);
 
     while(*a != EOF) //EOF = End Of File, lendo assim todos caracteres do arquivo
@@ -48,6 +48,8 @@ void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor)
         int i = (int)*a;
         vetor[i]++;
         *a = fgetc(arquivo);
+        if(*a == 255)
+            break;
     }
     free(a);
     
