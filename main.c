@@ -20,12 +20,12 @@
 #include "Compacta.h"
 #include <ctype.h>
 
-int main()
+int main(int argc, char const *argv[])
 {
-    FILE* arquivo;
-    //int vetor[255];
+    FILE* arquivo = NULL;
+    const char* nome_arquivo = argv[argc - 1];
 
-    arquivo = fopen("skate_spider.png", "r");
+    arquivo = fopen(nome_arquivo, "r");
     
     if(arquivo == NULL)
     {
