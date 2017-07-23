@@ -6,13 +6,9 @@
 
 //Procura o caminho do caracter na arvore e insere na lista 
 int procura_caminho(unsigned char c, Arv* arvore, ListaBits* lista){
-    if(arvore){
-        if(arv_get_char(arvore) == c){
-            return 1;
-        }
-    }else{
-        return 0;
-    }
+    if(arvore)
+        return (arv_get_char(arvore) == c);
+
 
     if(procura_caminho(c, arv_retorna_esq(arvore) , lista)){
         listabits_insere_inicio(lista, 0);
@@ -73,8 +69,10 @@ void comprime_lista_caminhos(FILE* arquivo, ListaBits* lista_caminhos){
         //printf("\nQue representa o char: %c\n", *novo_char);
         fprintf(arquivo, "%c", *novo_char);
         listabits_libera(lista_quebrada);
+        
+        free(novo_char);
     }
-    //free(lista_quebrada);
+    free(lista_caminhos);
 }
 
 
@@ -97,7 +95,7 @@ void compacta_arquivo(FILE* arquivo_entrada){
     
     //imprime a arvore otima de huffman no arquivo de modo compactado
     arv_serializa(arvore_otima, arquivo_saida);
-    fprintf(arquivo_saida, "\n");
+    //fprintf(arquivo_saida, "\n");
     
     //faz o ponteiro apontar novamente para o ininio do arquivo
     rewind(arquivo_entrada);
@@ -111,5 +109,11 @@ void compacta_arquivo(FILE* arquivo_entrada){
     //quebra a lista de caminhos e transforma em caracteres 
     comprime_lista_caminhos(arquivo_saida, lista_caminhos);
     
-    //********** TERMINAR FUNÇAO ***************
+    //fecha o arquivo compactado
+    fclose(arquivo_saida);
+    
+    //libera a arvore otima
+    arv_libera(arvore_otima);
+    
+    //As listas usadas são liberadas durante a manipulaçao das mesmas    
 }

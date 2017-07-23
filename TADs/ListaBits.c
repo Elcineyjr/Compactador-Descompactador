@@ -154,7 +154,7 @@ int listabits_tamanho(ListaBits* lista){
 }
 
 
-//completa uma lista de bits com 0
+//completa uma lista de bits com 0's
 void listabits_completa_com_zeros(ListaBits* lista){
     int tamanho_lista = listabits_tamanho(lista);
     
@@ -172,37 +172,14 @@ void listabits_completa_com_zeros(ListaBits* lista){
 //percorre a lista até achar a celula com index dado
 int listabits_retorna_bit_por_index(ListaBits* lista, int index){
     CelulaBit* aux = lista->prim;
-    //CelulaBit* ant = NULL;
     int i = 0;
     
     while(i < index){
-        //ant = aux;
         aux = aux->prox;
         i++;
     }
-    // if(aux == lista->prim && aux == lista->ult){
-    //     lista->prim = NULL;
-    //     lista->ult = NULL;
-    //     int bit = aux->bit;
-    //     free(aux);
-    //     return bit;
-    // }
-    // if(aux == lista->prim){
-    //     lista->prim = aux->prox;
-    //     int bit = aux->bit;
-    //     free(aux);
-    //     return bit;
-    // }
-    // if(aux == lista->ult){
-    //     ant->prox = NULL;
-    //     lista->ult = ant;
-    //     int bit = aux->bit;
-    //     free(aux);
-    //     return bit;
-    // }
-    // ant->prox = aux->prox;
+    
     int bit = aux->bit;
-    // free(aux);
     return bit;
 }
 

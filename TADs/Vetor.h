@@ -9,6 +9,4 @@
 */
 void gera_vetor_ascii_frequencia(FILE* arquivo, int* vetor);
 
-void vetor_imprime(int* vetor);
-
 #endif //TRAB2_VETOR_H

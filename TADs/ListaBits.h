@@ -81,9 +81,31 @@ void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista);
 */
 void listabits_pega_sete_primeiros(ListaBits* lista_geral, ListaBits* lista_nova);
 
+/*
+*Input: -Lista de bits
+*Output: inteiro
+*Pre-condiçao: Lista existente
+*Pós-condiçao: Tamanho da lista retornado
+*/
 int listabits_tamanho(ListaBits* lista);
+
+/*
+*Input: -Lista de bits
+*Output: Nenhum
+*Pre-condiçao: Lista existente
+*Pós-condiçao: 0's insereridos na lista até ter ela ter tamanho 8
+*/
 
 void listabits_completa_com_zeros(ListaBits* lista);
 
+/*
+*Input: -Lista de bits
+        -index do bit procurado
+*Output: inteiro (Bit procurado)
+*Pre-condiçao: Lista existente e index no maximo no tamanho da lista
+*Pós-condiçao: Bit do index procurado retornado
+*/
+
 int listabits_retorna_bit_por_index(ListaBits* lista, int index);
+
 #endif //TRAB2_LISTABITS_H

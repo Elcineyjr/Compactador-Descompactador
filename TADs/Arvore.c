@@ -102,7 +102,11 @@ void arv_libera (Arv* a)
 void arv_imprime(Arv* arvore)
 {
     if(arv_vazia(arvore))
+    {
+        //printf("Arvore vazia!\n");
         return;
+    }
+        
 
     arv_imprime(arvore->esq);
     arv_imprime(arvore->dir);
@@ -128,7 +132,7 @@ void arv_serializa(Arv* arvore, FILE* arquivo)
         fprintf(arquivo, "1%c", arvore->caracter);
         return;
     }    
-    fprintf(arquivo,"%d", 0);
+    fprintf(arquivo,"0");
     arv_serializa(arvore->esq, arquivo);
     arv_serializa(arvore->dir, arquivo);  
 }
