@@ -24,6 +24,17 @@ ListaBits* listabits_cria(){
 }
 
 
+//cria celula com bits
+CelulaBit* listabits_cria_celula(int bit){
+    CelulaBit* nova_celula = (CelulaBit*)malloc(sizeof(CelulaBit));
+    
+    nova_celula->bit = bit;
+    nova_celula->prox = NULL;
+    
+    return nova_celula;
+}
+
+
 //verifica se a lista é vazia
 int listabits_vazia(ListaBits* lista){
     return (lista->prim == NULL);
@@ -37,7 +48,7 @@ void listabits_limpa(ListaBits* lista){
 }
 
 
-//insere uma celula em uma lista
+//insere uma celula no final de uma lista
 void listabits_insere_celula(ListaBits* lista, CelulaBit* celula){
     if(listabits_vazia(lista)){
         lista->prim = celula;
@@ -116,7 +127,7 @@ void listabits_insere_lista_no_final(ListaBits* destino, ListaBits* lista){
 }
 
 
-//Pega os primeiros 8 elementos de uma lista e insere em uma nova
+//Pega os primeiros 7 elementos de uma lista e insere em uma nova
 void listabits_pega_sete_primeiros(ListaBits* lista_geral, ListaBits* lista_nova){
     if(listabits_vazia(lista_geral)){
         printf("Lista geral de bits está vazia!!\n");
@@ -184,3 +195,13 @@ int listabits_retorna_bit_por_index(ListaBits* lista, int index){
 }
 
 
+//retira primeira celula da lista
+int listabits_retira_primeiro(ListaBits* lista){
+    CelulaBit* aux = lista->prim;
+    int bit = aux->bit;
+    
+    lista->prim = lista->prim->prox;
+    free(aux);
+    
+    return bit;
+}

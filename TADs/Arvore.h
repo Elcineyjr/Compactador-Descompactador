@@ -49,6 +49,14 @@ Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d);
 void arv_libera (Arv* a);
 
 /*
+*Input: Arvore
+*Output: id da arvore
+*Pre-condiçao: arvore existente
+*Pós-condiçao: Nenhuma
+*/
+int arv_get_id(Arv* arvore);
+
+/*
 *Input: arvore
 *Output: peso da arvore
 *Pre-condiçao: Arvore existente
@@ -95,4 +103,5 @@ Arv* arv_retorna_esq(Arv* arvore);
 *Pós-condiçao: arvore da direita retornada
 */
 Arv* arv_retorna_dir(Arv* arvore);
+
 #endif //TRAB2_ARVORE_H

@@ -14,12 +14,29 @@
 */
 Arv* arv_desserializa(FILE* fp);
 
+/*
+*Input:
+*Output:
+*Pre-condiçao:
+*Pós-condiçao:
+*/
+void transforma_char_em_bits(ListaBits* lista, char c);
 
+/*
+*Input:
+*Output:
+*Pre-condiçao:
+*Pós-condiçao:
+*/
+void gera_listabits_com_caminhos_originais(FILE* arquivo_compactado, ListaBits* lista_original);
 
-
-
-
-
+/*
+*Input:
+*Output:
+*Pre-condiçao:
+*Pós-condiçao:
+*/
+void descompacta_arquivo();
 
 
 

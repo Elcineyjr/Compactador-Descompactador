@@ -49,7 +49,7 @@ Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d)
 {
     Arv* nova_arvore = (Arv*)malloc(sizeof(Arv));
 
-
+    nova_arvore->caracter = (char)0;
     nova_arvore->peso = peso;
     nova_arvore->esq = e;
     nova_arvore->dir = d;
@@ -57,6 +57,12 @@ Arv* arv_cria_no_comum(int peso, Arv* e, Arv* d)
     nova_arvore->id_no_ou_folha = ID_PESO;
 
     return nova_arvore;
+}
+
+
+//Retorna o id de uma arvore
+int arv_get_id(Arv* arvore){
+    return arvore->id_no_ou_folha;
 }
 
 

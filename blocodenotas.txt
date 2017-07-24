@@ -12,6 +12,33 @@ struct arv* arvEsq;
 struct arv* arvDir;
 };
 
+*******************************ESTATISTICAS***************************************
+************.txt:
+tamanho inicial: 904kb
+tamanho compactado: 550kb
+compactaçao: 58seg
+descompactaçao: 16seg
+
+************.png:
+tamanho inicial: 800kb
+tamanho compactado: 552kb
+compactaçao: <1seg
+descompactaçao: <1seg
+************.pdf:
+tamanho inicial: 125kb
+tamanho compactado: 369bytes
+compactaçao: <1seg
+descompactaçao: <1seg
+************.jpg:
+compactaçao: NAO FUNCIONA
+descompactaçao: NAO FUNCIONA
+
+/*
+*Input:
+*Output:
+*Pre-condiçao:
+*Pós-condiçao:
+*/
 
 
 vetor de numeros ASCII dos caracteres :

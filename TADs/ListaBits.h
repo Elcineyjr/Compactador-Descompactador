@@ -14,6 +14,14 @@ typedef struct celula CelulaBit;
 ListaBits* listabits_cria();
 
 /*
+*Input:
+*Output:
+*Pre-condiçao:
+*Pós-condiçao:
+*/
+CelulaBit* listabits_cria_celula(int bit);
+
+/*
 *Input: Lista de bits
 *Output: inteiro (true or false)
 *Pre-condiçao: Lista existente
@@ -95,7 +103,6 @@ int listabits_tamanho(ListaBits* lista);
 *Pre-condiçao: Lista existente
 *Pós-condiçao: 0's insereridos na lista até ter ela ter tamanho 8
 */
-
 void listabits_completa_com_zeros(ListaBits* lista);
 
 /*
@@ -105,7 +112,8 @@ void listabits_completa_com_zeros(ListaBits* lista);
 *Pre-condiçao: Lista existente e index no maximo no tamanho da lista
 *Pós-condiçao: Bit do index procurado retornado
 */
-
 int listabits_retorna_bit_por_index(ListaBits* lista, int index);
+
+int listabits_retira_primeiro(ListaBits* lista);
 
 #endif //TRAB2_LISTABITS_H

@@ -6,8 +6,13 @@
 
 //Procura o caminho do caracter na arvore e insere na lista 
 int procura_caminho(unsigned char c, Arv* arvore, ListaBits* lista){
-    if(arvore)
-        return (arv_get_char(arvore) == c);
+    if(arvore){
+        if(arv_get_char(arvore) == c){
+            return 1;
+        }
+    }else{
+        return 0;
+    }
 
 
     if(procura_caminho(c, arv_retorna_esq(arvore) , lista)){
@@ -46,30 +51,30 @@ void gera_lista_final_de_caminhos(FILE* arquivo, Arv* arvore_otima, ListaBits* l
 }
 
 
+//quebra a lista de caminhos, transforma em um caracter e escreve no arquivo de saida
 void comprime_lista_caminhos(FILE* arquivo, ListaBits* lista_caminhos){
-    int tamanho;
-    
     while (!listabits_vazia(lista_caminhos)){
         ListaBits* lista_quebrada = listabits_cria();
         listabits_pega_sete_primeiros(lista_caminhos, lista_quebrada);
         listabits_insere_inicio(lista_quebrada, 0);
-        tamanho = listabits_tamanho(lista_quebrada);
+        
+        int tamanho = listabits_tamanho(lista_quebrada);
         if(tamanho < 8){
             listabits_completa_com_zeros(lista_quebrada);
         }
         
-        bitmap bit = bitmapInit(8);
         //printf("Imprimindo os bits:");
-
+        bitmap bit = bitmapInit(8);
         for(int i = 0; i < 8; i++){
             //printf("%d", listabits_retorna_bit_por_index(lista_quebrada, i));
             bitmapAppendLeastSignificantBit(&bit, listabits_retorna_bit_por_index(lista_quebrada, i));
         }
-        unsigned char* novo_char = bitmapGetContents(bit);
-        //printf("\nQue representa o char: %c\n", *novo_char);
-        fprintf(arquivo, "%c", *novo_char);
-        listabits_libera(lista_quebrada);
         
+        unsigned char* novo_char = bitmapGetContents(bit);
+        fprintf(arquivo, "%c", *novo_char);
+        //printf("\nQue representa o char: %c\n", *novo_char);
+        
+        listabits_libera(lista_quebrada);
         free(novo_char);
     }
     free(lista_caminhos);
@@ -106,7 +111,7 @@ void compacta_arquivo(FILE* arquivo_entrada){
     //le cada caracter do arquivo e insere seu caminho no final da lista de caminhos
     gera_lista_final_de_caminhos(arquivo_entrada, arvore_otima, lista_caminhos);
     
-    //quebra a lista de caminhos e transforma em caracteres 
+    //quebra a lista de caminhos em bytes e transforma em caracteres 
     comprime_lista_caminhos(arquivo_saida, lista_caminhos);
     
     //fecha o arquivo compactado
