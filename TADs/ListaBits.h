@@ -14,10 +14,10 @@ typedef struct celula CelulaBit;
 ListaBits* listabits_cria();
 
 /*
-*Input:
-*Output:
-*Pre-condiçao:
-*Pós-condiçao:
+*Input: bit(0 ou 1)
+*Output: Celula
+*Pre-condiçao: Nenhuma
+*Pós-condiçao: bit inserido na Celula
 */
 CelulaBit* listabits_cria_celula(int bit);
 
@@ -113,6 +113,13 @@ void listabits_completa_com_zeros(ListaBits* lista);
 *Pós-condiçao: Bit do index procurado retornado
 */
 int listabits_retorna_bit_por_index(ListaBits* lista, int index);
+
+/*
+*Input: Lista 
+*Output: bit da primeira celula
+*Pre-condiçao: Lista existente
+*Pós-condiçao: bit retornado e celula liberada
+*/
 
 int listabits_retira_primeiro(ListaBits* lista);
 

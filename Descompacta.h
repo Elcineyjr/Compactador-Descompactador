@@ -15,37 +15,29 @@
 Arv* arv_desserializa(FILE* fp);
 
 /*
-*Input:
-*Output:
-*Pre-condiçao:
-*Pós-condiçao:
+*Input: -lista de bits
+        -caracter
+*Output: Nenhum
+*Pre-condiçao: lista existente
+*Pós-condiçao: sequencia de bits do char inserido na lista
 */
 void transforma_char_em_bits(ListaBits* lista, char c);
 
 /*
-*Input:
-*Output:
-*Pre-condiçao:
-*Pós-condiçao:
+*Input: -arquivo compactado
+        -lista de caminhos
+*Output: Nenhum
+*Pre-condiçao: lista existente
+*Pós-condiçao: lista completa com caminhos de todos os caracteres
 */
 void gera_listabits_com_caminhos_originais(FILE* arquivo_compactado, ListaBits* lista_original);
 
 /*
-*Input:
-*Output:
-*Pre-condiçao:
-*Pós-condiçao:
+*Input: Nenhum
+*Output: Nenhum
+*Pre-condiçao: Nenhuma
+*Pós-condiçao: Arquivo compactado
 */
 void descompacta_arquivo();
-
-
-
-/*
-*Input:
-*Output:
-*Pre-condiçao:
-*Pós-condiçao:
-*/
-
 
 #endif //TRAB2_DESCOMPACTA_H

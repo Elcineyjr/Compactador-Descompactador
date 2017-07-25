@@ -99,6 +99,10 @@ void descompacta_arquivo(){
     Arv* arvore_otima;
     ListaBits* lista_caminhos_originais; 
     
+    if(arquivo_compactado == NULL){
+        printf("Falha na abertura do arquivo! Abortando execução do programa!\n");
+        exit(1);
+    }
     
     
     //le a arvore serializada no arquivo compactado e gera a arvore otima para manipulaçao
@@ -123,5 +127,6 @@ void descompacta_arquivo(){
     fclose(arquivo_descompactado); 
     
     arv_libera(arvore_otima);
-    /****************TERMINAR ESSA FUNÇAO************************/
+    
+    //As listas usadas foram liberadas durante a manipulaçao
 }

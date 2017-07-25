@@ -114,6 +114,9 @@ void compacta_arquivo(FILE* arquivo_entrada){
     //quebra a lista de caminhos em bytes e transforma em caracteres 
     comprime_lista_caminhos(arquivo_saida, lista_caminhos);
     
+    //fecha o arquivo de entrada
+    fclose(arquivo_entrada);
+    
     //fecha o arquivo compactado
     fclose(arquivo_saida);
     
